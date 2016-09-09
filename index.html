@@ -28,30 +28,57 @@
 				this.count = count
 			}
 
-			//listingShelf()
-			function listingShelf(name, price, count) {
+			//addToShelf()
+			function addToShelf(name, price, count) {
 				var item = new shoppingItem(name, price, count)
 				shelf.push(item)
 			}
-			listingShelf('HouseBlend 1lb', 18, 1)
-			listingShelf('HouseBlend 0.5lb', 18, 1)
-			listingShelf('KenyaAA 1lb', 18, 1)
-			listingShelf('KenyaAA 0.5lb', 18, 1)
-			listingShelf('Espresso 1lb', 18, 1)
-			listingShelf('Espresso 0.5lb', 18, 1)
+			addToShelf('HouseBlend 1lb', 18, 1)
+			addToShelf('HouseBlend 0.5lb', 18, 1)
+			addToShelf('KenyaAA 1lb', 18, 1)
+			addToShelf('KenyaAA 0.5lb', 18, 1)
+			addToShelf('Espresso 1lb', 18, 1)
+			addToShelf('Espresso 0.5lb', 18, 1)
+
+
+			//ListingShelf()
+
+				// to be visable on the UI
 
 
 			//addItemToCart()
 			function addItemToCart(name, price, count) {
+				for (var i in cart) {
+					if (cart[i].name === name) {
+						cart[i].count += count 
+						return
+					}
+				}
 				var item = new shoppingItem(name, price, count)
 				cart.push(item)
 			}
+					//testing
+					addItemToCart('Apple', 2.5, 2)
+					addItemToCart('Mango', 5.3, 3)
+					addItemToCart('Apple', 2.5, 3)
+					addItemToCart('Mango', 5.3, 3)
 
-			
-			console.log(shelf)
-			console.log(cart)
+
 
 			//removeITemFromCart(name) // just one item
+			function removeItemFromCart(name) {
+				for (var i in cart) {
+					if (cart[i].name === name) {
+						cart[i].count --
+						if (cart[i].count === 0 ) {
+							cart.splice(i, 1)
+						}
+						break
+					}
+				}
+			}
+
+				
 
 
 
