@@ -78,19 +78,20 @@
 				}
 			}
 
-				//testing
-				console.log(cart[0].count)
-				removeItemFromCart('Apple')
-				removeItemFromCart('Apple')
-				removeItemFromCart('Apple')
-				removeItemFromCart('Apple')
-				removeItemFromCart('Apple')
-				removeItemFromCart('Apple')
-				console.log(cart)
-
-
 
 			//removeItem FromCartAll(name) //remove all item 
+			function removeItemFromCartAll(name) {
+				for (var i in cart) {
+					if (cart[i].name === name) {
+						cart.splice(i, 1)
+						break
+					}
+
+				}
+			}
+
+					
+
 
 			
 			//clearCart()
