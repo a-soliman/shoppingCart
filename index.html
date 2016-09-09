@@ -3,10 +3,11 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title></title>
+		<title>Shopping cart</title>
 		<link rel="stylesheet" type="text/css" href="css/main.css">
 	</head>
 	<body>
+		<h1>shopping cart</h1>
 
 
 
@@ -16,5 +17,34 @@
 		<!-- ******Jquery GOOGLE CDN***** -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 		<script src="js/main.js"></script>
+		<script>
+			var cart = []
+			// name price count
+
+			//	Items
+			var shoppingItem = function(name, price, count) {
+				this.name = name,
+				this.price = price,
+				this.count = count
+			}
+			var houseBlend1 		= new shoppingItem('HouseBlend 1lb', 18, 1)
+			var houseBlendHalf 		= new shoppingItem('HouseBlend 0.5lb', 18, 1)
+			var Kenya1				= new shoppingItem('KenyaAA 1lb', 18, 1)
+			var KenyaHalf			= new shoppingItem('KenyaAA 0.5lb', 18, 1)
+			var espressoBlend1 		= new shoppingItem('Espresso 1lb', 18, 1)
+			var espressoBlendHalf 	= new shoppingItem('Espresso 0.5lb', 18, 1)
+
+			// pushing to the cart array
+			cart.push(houseBlend1)
+			cart.push(houseBlendHalf)
+			cart.push(Kenya1)
+			cart.push(KenyaHalf)
+			cart.push(espressoBlend1)
+			cart.push(espressoBlendHalf)
+
+			console.log(cart.length)
+
+
+		</script>
 	</body>
 </html>
