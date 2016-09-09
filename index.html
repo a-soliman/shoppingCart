@@ -57,11 +57,6 @@
 				var item = new shoppingItem(name, price, count)
 				cart.push(item)
 			}
-					//testing
-					addItemToCart('Apple', 2.5, 2)
-					addItemToCart('Mango', 5.3, 3)
-					addItemToCart('Apple', 2.5, 3)
-					addItemToCart('Mango', 5.3, 3)
 
 
 
@@ -112,9 +107,22 @@
 
 			
 			//clearCart()
+			function clearCart() {
+				cart = []
+			}
 
 
 			//countCart() -> return total count
+			function countCart() {
+				var totalCount = 0
+				for (var i in cart){
+					totalCount += cart[i].count
+				}
+				return totalCount
+			}
+
+						//testing
+						console.log( countCart() )
 
 
 			//totalCart() -> return total cost
