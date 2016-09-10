@@ -111,24 +111,24 @@
 			}
 			//addItemToCart()
 			shoppingCart.addItemToCart = function (name, price, count) {
-				for (var i in cart) {
-					if (cart[i].name === name) {
-						cart[i].count += count 
+				for (var i in this.cart) {
+					if (this.cart[i].name === name) {
+						this.cart[i].count += count 
 						this.saveCart()
 						return
 					}
 				}
 				var item = new this.shoppingItem(name, price, count)
-				cart.push(item)
+				this.cart.push(item)
 				shoppingCart.saveCart()
 			}
 			//removeITemFromCart(name) // just one item
 			shoppingCart.removeItemFromCart = function(name) {
-				for (var i in cart) {
-					if (cart[i].name === name) {
-						cart[i].count --
-						if (cart[i].count === 0 ) {
-							cart.splice(i, 1)
+				for (var i in this.cart) {
+					if (this.cart[i].name === name) {
+						this.cart[i].count --
+						if (this.cart[i].count === 0 ) {
+							this.cart.splice(i, 1)
 						}
 						break
 					}
@@ -137,9 +137,9 @@
 			}
 			//removeItem FromCartAll(name) //remove all item 
 			shoppingCart.removeItemFromCartAll = function(name) {
-				for (var i in cart) {
-					if (cart[i].name === name) {
-						cart.splice(i, 1)
+				for (var i in this.cart) {
+					if (this.cart[i].name === name) {
+						this.cart.splice(i, 1)
 						break
 					}
 
@@ -148,14 +148,14 @@
 			}
 			//clearCart()
 			shoppingCart.clearCart = function() {
-				cart = []
+				this.cart = []
 				this.saveCart()
 			}
 			//countCart() -> return total count
 			shoppingCart.countCart = function() {
 				var totalCount = 0
-				for (var i in cart){
-					totalCount += cart[i].count
+				for (var i in this.cart){
+					totalCount += this.cart[i].count
 				}
 				return totalCount
 			}
@@ -163,16 +163,16 @@
 			shoppingCart.totalCart = function() {
 				var totalCost = 0
 
-				for (var i in cart) {
-					totalCost += cart[i].price * cart[i].count
+				for (var i in this.cart) {
+					totalCost += this.cart[i].price * this.cart[i].count
 				}
 				return totalCost.toFixed(2)
 			}
 			//listCart()  -> array of Items
 			shoppingCart.listCart = function() {
 				var cartCopy = []
-				for (var i in cart) {
-					var item = cart[i]
+				for (var i in this.cart) {
+					var item = this.cart[i]
 					var itemCopy = {}
 					for (var p in item) {
 						itemCopy[p] = item[p]
@@ -184,19 +184,18 @@
 			}
 			//saveCart() -> to check it later -> using local storage 
 			shoppingCart.saveCart = function() {
-				localStorage.setItem('shoppingCart', JSON.stringify(cart))
+				localStorage.setItem('shoppingCart', JSON.stringify(this.cart))
 			}
 			//loadCart() -> after saving
 			shoppingCart.loadCart = function() {
-				cart = JSON.parse(localStorage.getItem('shoppingCart'))
+				this.cart = JSON.parse(localStorage.getItem('shoppingCart'))
 			}
 
 			shoppingCart.loadCart()
 
 			displayCart()
 
-			var array = shoppingCart.listCart()
-			console.log(array)
+
 
 
 
