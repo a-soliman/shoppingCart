@@ -126,7 +126,18 @@
 
 
 			//totalCart() -> return total cost
+			function totalCart() {
+				var totalCost = 0
 
+				for (var i in cart) {
+					totalCost += cart[i].price
+				}
+				return totalCost
+			}
+
+					// testing
+
+					console.log( totalCart() )
 
 			//listCart()  -> array of Items
 
