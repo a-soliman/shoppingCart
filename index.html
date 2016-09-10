@@ -140,7 +140,18 @@
 					console.log( totalCart() )
 
 			//listCart()  -> array of Items
-
+			function listCart() {
+				var cartCopy = []
+				for (var i in cart) {
+					var item = cart[i]
+					var itemCopy = {}
+					for (var p in item) {
+						itemCopy[p] = item[p]
+					}
+					cartCopy.push(itemCopy)
+				}
+				return cartCopy
+			}
 
 			//saveCart() -> to check it later
 
