@@ -63,11 +63,13 @@
 					+ cartArray[i].price
 					+ ' = '
 					+ cartArray[i].total
+					+ ' <button class="delete-item"> X </button>'
 					+ '</li>'
 				}
 				$('#show-cart').html(output)
 				$('#total-cart').html( totalCart() )
 			}
+			
 
 
 			//********************************************************
