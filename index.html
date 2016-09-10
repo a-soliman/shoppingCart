@@ -180,7 +180,7 @@
 					for (var p in item) {
 						itemCopy[p] = item[p]
 					}
-					itemCopy.total = item.price * item.count
+					itemCopy.total = (item.price * item.count).toFixed(2)
 					cartCopy.push(itemCopy)
 				}
 				return cartCopy
