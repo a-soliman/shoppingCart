@@ -56,6 +56,7 @@
 				}
 				var item = new shoppingItem(name, price, count)
 				cart.push(item)
+				saveCart()
 			}
 
 
@@ -71,6 +72,7 @@
 						break
 					}
 				}
+				saveCart()
 			}
 
 
@@ -83,6 +85,7 @@
 					}
 
 				}
+				saveCart()
 			}
 
 					//testing
@@ -109,6 +112,7 @@
 			//clearCart()
 			function clearCart() {
 				cart = []
+				saveCart()
 			}
 
 
