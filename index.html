@@ -153,7 +153,10 @@
 				return cartCopy
 			}
 
-			//saveCart() -> to check it later
+			//saveCart() -> to check it later -> using local storage 
+			function saveCart() {
+				localStorage.setItem('shoppingCart', JSON.stringify(cart))
+			}
 
 
 			//loadCart() -> after saving
