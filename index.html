@@ -24,6 +24,8 @@
 			<ul id="show-cart">
 				<!-- -->
 			</ul>
+
+			<div>Total Cart: $<span id="total-cart"></span></div>
 		</div>
 
 
@@ -42,7 +44,7 @@
 				var price = Number($(this).attr('data-price'))
 
 				addItemToCart(name, price, 1)
-				
+				displayCart()
 			})
 
 			function displayCart() {
@@ -52,6 +54,7 @@
 					output += '<li>'+cartArray[i].name+' '+cartArray[i].count+'</li>'
 				}
 				$('#show-cart').html(output)
+				$('#total-cart').html('99.70')
 			}
 
 
