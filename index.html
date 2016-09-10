@@ -35,6 +35,18 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 		<script src="js/main.js"></script>
 		<script>
+
+			$('.add-to-cart').click(function(event) {
+				event.preventDefault()
+				var name = $(this).attr('data-name')
+				var price = Number($(this).attr('data-price'))
+
+				addItemToCart(name, price, 1)
+			})
+
+
+			//********************************************************
+			// SHOPPING CART 
 			var shelf = []
 			var cart = []
 
