@@ -63,6 +63,10 @@
 					+ cartArray[i].price
 					+ ' = '
 					+ cartArray[i].total
+					+ ' <button class="subtract-item" data-name="'
+					+ cartArray[i].name +'"> - </button>'
+					+ ' <button class="plus-item" data-name="'
+					+ cartArray[i].name +'"> + </button>'
 					+ ' <button class="delete-item" data-name="'
 					+ cartArray[i].name +'"> X </button>'
 					+ '</li>'
@@ -75,6 +79,17 @@
 				var name = $(this).attr('data-name')
 
 				removeItemFromCartAll(name)
+				displayCart()
+			})
+
+			$('#show-cart').on('click', '.subtract-item', function(event) {
+				var name = $(this).attr('data-name')
+				removeItemFromCart(name)
+				displayCart()
+			})
+			$('#show-cart').on('click', '.plus-item', function(event) {
+				var name =$(this).attr('data-name')
+				addItemToCart(name, 0, 1)
 				displayCart()
 			})
 
