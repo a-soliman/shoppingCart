@@ -24,7 +24,7 @@
 			<ul id="show-cart">
 				<!-- -->
 			</ul>
-
+			<div>You have <span id="count-cart">X</span> items in your cart.</div>
 			<div>Total Cart: $<span id="total-cart"></span></div>
 		</div>
 
@@ -74,6 +74,7 @@
 					+ '</li>'
 				}
 				$('#show-cart').html(output)
+				$('#count-cart').html(shoppingCart.countCart() )
 				$('#total-cart').html( shoppingCart.totalCart() )
 			}
 
@@ -195,14 +196,6 @@
 
 			displayCart()
 
-
-
-
-
-
-			//ListingShelf()
-
-				// to be visable on the UI
 
 
 		</script>
