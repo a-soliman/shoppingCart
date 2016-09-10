@@ -47,6 +47,11 @@
 				displayCart()
 			})
 
+			$('#clear-cart').click(function(event) {
+				clearCart()
+				displayCart()
+			})
+
 			function displayCart() {
 				var cartArray = listCart()
 				var output = ''
@@ -93,6 +98,7 @@
 				for (var i in cart) {
 					if (cart[i].name === name) {
 						cart[i].count += count 
+						saveCart()
 						return
 					}
 				}
