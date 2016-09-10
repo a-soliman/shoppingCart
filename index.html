@@ -54,7 +54,7 @@
 					output += '<li>'+cartArray[i].name+' '+cartArray[i].count+'</li>'
 				}
 				$('#show-cart').html(output)
-				$('#total-cart').html('99.70')
+				$('#total-cart').html( totalCart() )
 			}
 
 
@@ -153,7 +153,7 @@
 				var totalCost = 0
 
 				for (var i in cart) {
-					totalCost += cart[i].price
+					totalCost += cart[i].price * cart[i].count
 				}
 				return totalCost
 			}
