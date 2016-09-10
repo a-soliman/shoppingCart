@@ -56,7 +56,14 @@
 				var cartArray = listCart()
 				var output = ''
 				for (var i in cartArray) {
-					output += '<li>'+cartArray[i].name+' '+cartArray[i].count+'</li>'
+					output += '<li>'
+					+cartArray[i].name + ' '
+					+ cartArray[i].count
+					+ ' x '
+					+ cartArray[i].price
+					+ ' = '
+					+ cartArray[i].total
+					+ '</li>'
 				}
 				$('#show-cart').html(output)
 				$('#total-cart').html( totalCart() )
@@ -173,6 +180,7 @@
 					for (var p in item) {
 						itemCopy[p] = item[p]
 					}
+					itemCopy.total = item.price * item.count
 					cartCopy.push(itemCopy)
 				}
 				return cartCopy
