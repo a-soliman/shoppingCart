@@ -36,10 +36,8 @@
 		<!-- ******Jquery GOOGLE CDN***** -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 		<script src="js/main.js"></script>
+		<script src="js/shopping-cart.js"></script>
 		<script>
-
-			var myFunctions = {}
-
 			$('.add-to-cart').click(function(event) {
 				event.preventDefault()
 				var name = $(this).attr('data-name')
@@ -59,8 +57,10 @@
 				var output = ''
 				for (var i in cartArray) {
 					output += '<li>'
-					+cartArray[i].name + ' '
-					+ cartArray[i].count
+					+cartArray[i].name
+					+ ' <input class="item-count" type="number" data-name="' 
+					+ cartArray[i].name +'" value="' 
+					+ cartArray[i].count +'">'
 					+ ' x '
 					+ cartArray[i].price
 					+ ' = '
@@ -91,112 +91,21 @@
 				displayCart()
 			})
 			$('#show-cart').on('click', '.plus-item', function(event) {
-				var name =$(this).attr('data-name')
+				var name = $(this).attr('data-name')
 				shoppingCart.addItemToCart(name, 0, 1)
 				displayCart()
 			})
+			$('#show-cart').on('change', '.item-count', function(event) {
+				var name = $(this).attr('data-name')
+				var count = Number($(this).val())
 
-
-
-			//********************************************************
-			// SHOPPING CART FUNCTIONS
-
-			var shoppingCart = {}
-
-			shoppingCart.cart = []
-
-			shoppingCart.shoppingItem = function(name, price, count) {
-				this.name = name,
-				this.price = price,
-				this.count = count
-			}
-			//addItemToCart()
-			shoppingCart.addItemToCart = function (name, price, count) {
-				for (var i in this.cart) {
-					if (this.cart[i].name === name) {
-						this.cart[i].count += count 
-						this.saveCart()
-						return
-					}
+				if (count === 0 || count > 0 ) {
+					shoppingCart.removeItemFromCartAll(name)
 				}
-				var item = new this.shoppingItem(name, price, count)
-				this.cart.push(item)
-				shoppingCart.saveCart()
-			}
-			//removeITemFromCart(name) // just one item
-			shoppingCart.removeItemFromCart = function(name) {
-				for (var i in this.cart) {
-					if (this.cart[i].name === name) {
-						this.cart[i].count --
-						if (this.cart[i].count === 0 ) {
-							this.cart.splice(i, 1)
-						}
-						break
-					}
-				}
-				this.saveCart()
-			}
-			//removeItem FromCartAll(name) //remove all item 
-			shoppingCart.removeItemFromCartAll = function(name) {
-				for (var i in this.cart) {
-					if (this.cart[i].name === name) {
-						this.cart.splice(i, 1)
-						break
-					}
 
-				}
-				this.saveCart()
-			}
-			//clearCart()
-			shoppingCart.clearCart = function() {
-				this.cart = []
-				this.saveCart()
-			}
-			//countCart() -> return total count
-			shoppingCart.countCart = function() {
-				var totalCount = 0
-				for (var i in this.cart){
-					totalCount += this.cart[i].count
-				}
-				return totalCount
-			}
-			//totalCart() -> return total cost
-			shoppingCart.totalCart = function() {
-				var totalCost = 0
-
-				for (var i in this.cart) {
-					totalCost += this.cart[i].price * this.cart[i].count
-				}
-				return totalCost.toFixed(2)
-			}
-			//listCart()  -> array of Items
-			shoppingCart.listCart = function() {
-				var cartCopy = []
-				for (var i in this.cart) {
-					var item = this.cart[i]
-					var itemCopy = {}
-					for (var p in item) {
-						itemCopy[p] = item[p]
-					}
-					itemCopy.total = (item.price * item.count).toFixed(2)
-					cartCopy.push(itemCopy)
-				}
-				return cartCopy
-			}
-			//saveCart() -> to check it later -> using local storage 
-			shoppingCart.saveCart = function() {
-				localStorage.setItem('shoppingCart', JSON.stringify(this.cart))
-			}
-			//loadCart() -> after saving
-			shoppingCart.loadCart = function() {
-				this.cart = JSON.parse(localStorage.getItem('shoppingCart'))
-			}
-
-			shoppingCart.loadCart()
-
+				shoppingCart.setCountForItem(name,count)
+			})
 			displayCart()
-
-
 
 		</script>
 	</body>
